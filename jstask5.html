@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input.error,
+        .form-group textarea.error {
+            border: 2px solid red;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        function validateField(element, pattern, message) {
+            let value = element.value.trim();
+            let errorMessageElement = element.nextElementSibling;
+
+            if (!value) {
+                errorMessageElement.innerText = message;
+                element.classList.add("error");
+            } else if (pattern && !pattern.test(value)) {
+                errorMessageElement.innerText = "Please enter a valid value";
+                element.classList.add("error");
+            } else {
+                errorMessageElement.innerText = "";
+                element.classList.remove("error");
+            }
+        }
+
+        function setupValidation() {
+            let name = document.getElementById("name");
+            let email = document.getElementById("email");
+            let website = document.getElementById("website");
+            let message = document.getElementById("message");
+
+            name.addEventListener("input", function() {
+                validateField(name, null, "This field is required");
+            });
+
+            email.addEventListener("input", function() {
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                validateField(email, emailPattern, "A valid email address is required");
+            });
+
+            website.addEventListener("input", function() {
+                let urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+                validateField(website, urlPattern, "A valid URL is required");
+            });
+
+            message.addEventListener("input", function() {
+                validateField(message, null, "This field is required");
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", setupValidation);
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Contact Form</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div class="error-message">This field is required</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
+                <div class="error-message">A valid email address is required</div>
+            </div>
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <input type="text" id="website" name="website">
+                <div class="error-message">A valid URL is required</div>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <div class="error-message">This field is required</div>
+            </div>
+            <button type="submit" onclick="return false;">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

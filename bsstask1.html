@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethnus Layout</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar-blue {
+            background-color: #00BFFF;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar-gray {
+            background-color: #D3D3D3;
+        }
+        .sidebar {
+            background-color: #696969;
+            height: 100vh;
+        }
+        .content {
+            background-color: #F0F8FF;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Topmost Navbar -->
+    <nav class="navbar navbar-blue">
+        <a class="navbar-brand text-white" href="#">Ethnus Layout</a>
+    </nav>
+
+    <!-- Secondary Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-gray">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 content">
+                <p>Write your content here</p>
+            </div>
+            <div class="col-md-3 sidebar">
+                <p class="text-white">This is</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

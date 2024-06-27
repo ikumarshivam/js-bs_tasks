@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Train Animation</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .train {
+            width: 100px;
+            position: relative;
+            animation: moveTrain 5s linear infinite;
+        }
+        @keyframes moveTrain {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+        .hidden {
+            animation-play-state: paused;
+        }
+    </style>
+    <script>
+        function startAnimation() {
+            document.getElementById("train").classList.remove("hidden");
+        }
+
+        function stopAnimation() {
+            document.getElementById("train").classList.add("hidden");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img id="train" src="Screenshot 2024-06-26 173919.png" alt="Train" class="train hidden">
+        <h2>Click the following buttons to handle animation</h2>
+        <button onclick="startAnimation()">Start</button>
+        <button onclick="stopAnimation()">Stop</button>
+    </div>
+</body>
+</html>

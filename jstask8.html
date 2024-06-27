@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mainbox{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, #fde8d7 0%, #fbc2eb 100%);
+        }
+        .sub{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input[type="text"], input[type="password"] {
+            margin-bottom: 3px;
+            width: 500px; /* Adjust input width as needed */
+            margin-left: 10px;
+            margin-right:130px;
+        }
+        p{
+            margin: 0;
+            flex: 1; /* Makes all labels the same width */
+            text-align: right; /* Aligns text to the right of the label */
+            padding-right: 10px;  
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="mainbox">
+        <form>
+            <p1 class="sub">Registration</p1>
+            <div class="sub">
+                <p style="padding-right: 20px;">First Name</p>
+                <input class="st" type="text">
+                <span class="sp" style="color:red;">Poor</span>
+            </div>
+            <div class="sub">
+                <p style="padding-right: 20px;">Last Name</p>
+                <input class="st" type="text">
+                <span class="sp"style="color:red;">Poor</span>
+            </div> 
+            <div class="sub">
+                <p style="padding-right: 20px; ">Email</p>
+                <input class="st" type="text">
+                <span class="sp"style="color:red;">Poor</span>
+            </div> 
+            <div class="sub">
+                <p style="padding-right: 20px;">Password</p>
+                <input id="password" class="st" type="password">
+                <span id="passwordMessage" style="color:red;">Poor</span>
+            </div> 
+            <div class="sub">
+                <p style="padding-right: 20px;">Re-enter Password</p>
+                <input id="rePassword" class="st" type="password">
+                <span id="rePasswordMessage"style="color:red;">Poor</span>
+            </div> 
+            <div style=" display: flex; ">
+                <div style=" flex: 1; padding-top: 10px;text-align: right;"><p style="padding-right: 36px;">Gender</p></div>
+                <div style="  flex-direction: column; flex:4; text-align: left;">
+                    <div >
+                        <input type="radio" name="gender" id="male">
+                        <label>Male</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="female">
+                        <label>Female</label>
+                    </div>
+                </div>  
+            </div>
+            <div class="sub">
+                <p style="padding-right: 20px;">Age</p>
+                <input class="st" type="text">
+                <span class="sp"style="color:red;">Poor</span>
+            </div> 
+            <div class="sub">
+                <p style="padding-right: 20px;">Address</p>
+                <input class="st" type="text">
+                <span class="sp"style="color:red;">Poor</span>
+            </div> 
+            <div class="sub">
+                <p style="padding-right: 20px;">State</p>
+                <input class="st" type="text">
+                <span class="sp"style="color:red;">Poor</span>
+            </div> 
+            <div style=" display: flex; ">
+                <div style=" flex: 1; text-align: right;"><p style="padding-right: 36px;">Country</p></div>
+                <div style="  flex-direction: column; flex:4; text-align: left;">
+                    <div >
+                        <select id="country" name="country">
+                            <option value="india">India</option>
+                            <option value="bangladesh">Bangladesh</option>
+                            <option value="myanmar">Myanmar</option>
+                            <option value="nepal">Nepal</option>
+                        </select>
+                    </div>
+                </div>
+            </div> 
+            <div style=" display: flex; ">
+                <div style=" flex: 1; text-align: right;"><p style="padding-right: 36px;">Languages</p></div>
+                <div style="  flex-direction: column; flex:4; text-align: left;">
+                    <div >
+                        <label>
+                            <input type="checkbox">
+                            English
+                        </label>
+                        <label>
+                            &nbsp;
+                            <input type="checkbox">
+                            Kannada
+                        </label>
+                        <label>
+                            &nbsp;
+                            <input type="checkbox">
+                            Hindi
+                        </label>
+                        <label>
+                            &nbsp;
+                            <input type="checkbox">
+                            Telugu
+                        </label>
+                    </div>
+                </div>
+            </div>  
+            <button style="background-color: red; height: 26px;border-radius: 13px; width: 90px;color: white;">Register</button>
+        </form>
+    </div>
+    <script>
+        function f(st, sp){
+            var inputFields = document.querySelectorAll('.' + st);
+            var msgs = document.querySelectorAll('.' + sp);
+            
+            inputFields.forEach((inputField, index) => {
+                inputField.addEventListener('input', function(){
+                    if(this.value.trim() === ''){
+                        msgs[index].textContent = 'Poor';
+                        msgs[index].style.color = 'red';
+                    } else {
+                        msgs[index].textContent = '';
+                    }
+                });
+            });
+        }
+        
+        f('st', 'sp');
+
+        var passwordField = document.getElementById('password');
+        var passwordMessage = document.getElementById('passwordMessage');
+        var rePasswordField = document.getElementById('rePassword');
+        var rePasswordMessage = document.getElementById('rePasswordMessage');
+
+        passwordField.addEventListener('input', function() {
+            var length = this.value.length;
+            if (length === 0 || length <= 2) {
+                passwordMessage.textContent = 'Poor';
+                passwordMessage.style.color = 'red';
+            } else if (length <= 5) {
+                passwordMessage.textContent = 'Fair';
+                passwordMessage.style.color = 'orange';
+            } else if (length >5) {
+                passwordMessage.textContent = 'Strong';
+                passwordMessage.style.color = 'green';
+            } else {
+                passwordMessage.textContent = '';
+            }
+        });
+
+        rePasswordField.addEventListener('input', function() {
+            if (this.value !== passwordField.value) {
+                rePasswordMessage.textContent = 'Mismatch';
+                rePasswordMessage.style.color = 'red';
+            } else {
+                rePasswordMessage.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>

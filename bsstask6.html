@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <form id="myForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control is-invalid" id="name" placeholder="Enter your name">
+            <div class="invalid-feedback">
+                Name is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control is-invalid" id="email" placeholder="Enter your email">
+            <div class="invalid-feedback">
+                Email is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control is-invalid" id="password" placeholder="Enter your password">
+            <div class="invalid-feedback">
+                Password is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hobbies">Hobbies</label>
+            <select class="form-control" id="hobbies">
+                <option value="" disabled selected>Select your hobbies</option>
+                <option value="reading">Reading</option>
+                <option value="traveling">Traveling</option>
+                <option value="sports">Sports</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        validateForm();
+    });
+
+    function validateForm() {
+        var isValid = true;
+
+        var nameField = document.getElementById('name');
+        var nameFeedback = nameField.nextElementSibling;
+        if (nameField.value.trim() === '') {
+            nameField.classList.add('is-invalid');
+            nameFeedback.classList.remove('hidden');
+            isValid = false;
+        } else {
+            nameField.classList.remove('is-invalid');
+            nameFeedback.classList.add('hidden');
+        }
+
+        var emailField = document.getElementById('email');
+        var emailFeedback = emailField.nextElementSibling;
+        if (emailField.value.trim() === '') {
+            emailField.classList.add('is-invalid');
+            emailFeedback.classList.remove('hidden');
+            isValid = false;
+        } else {
+            emailField.classList.remove('is-invalid');
+            emailFeedback.classList.add('hidden');
+        }
+
+        var passwordField = document.getElementById('password');
+        var passwordFeedback = passwordField.nextElementSibling;
+        if (passwordField.value.trim() === '') {
+            passwordField.classList.add('is-invalid');
+            passwordFeedback.classList.remove('hidden');
+            isValid = false;
+        } else {
+            passwordField.classList.remove('is-invalid');
+            passwordFeedback.classList.add('hidden');
+        }
+
+        if (isValid) {
+            // Form is valid, submit it or handle further actions here
+            alert('Form submitted successfully!');
+        }
+    }
+
+    function addInputListeners() {
+        var inputs = document.querySelectorAll('#name, #email, #password');
+        inputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                validateField(input);
+            });
+        });
+    }
+
+    function validateField(input) {
+        var feedback = input.nextElementSibling;
+        if (input.value.trim() === '') {
+            input.classList.add('is-invalid');
+            feedback.classList.remove('hidden');
+        } else {
+            input.classList.remove('is-invalid');
+            feedback.classList.add('hidden');
+        }
+    }
+
+    addInputListeners();
+</script>
+</body>
+</html>

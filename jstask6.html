@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Login</title>
+    <!-- Include Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Billabong&family=Roboto:wght@400;500&display=swap">
+    <!-- Include FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        .login-container {
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h1 {
+            font-family: 'Billabong', cursive;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            padding-left: 35px;
+            box-sizing: border-box;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            background-color: #fafafa;
+            font-size: 14px;
+        }
+        .form-group .icon {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0095f6;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-container button:hover {
+            background-color: #007bb5;
+        }
+        .login-container .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #00376b;
+            margin: 10px 0;
+        }
+        .login-container .options a {
+            color: #00376b;
+            text-decoration: none;
+        }
+        .login-container .options a:hover {
+            text-decoration: underline;
+        }
+        .login-container .signup {
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        .login-container .signup a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+        .login-container .signup a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 style="font-style: italic;font-weight:lighter; font-family: sans-serif;">Instagram</h1>
+        <form>
+            <div class="form-group">
+                <span class="icon"><i class="fas fa-user"></i></span>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <span class="icon"><i class="fas fa-lock"></i></span>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Log in</button>
+            <div class="options">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#">Forgot Password?</a>
+            </div>
+        </form>
+        <div class="signup">
+            Don't have an account? <a href="#">Sign up here</a>
+        </div>
+    </div>
+</body>
+</html>
